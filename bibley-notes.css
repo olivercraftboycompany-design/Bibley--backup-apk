@@ -1,0 +1,73 @@
+/* bibley-notes.css - paged Notes notebook + "Add to notes" under AI summaries. Uses the page's own CSS vars. */
+.fx-dock .fx-notes-b svg { display: block; }
+.fx-dock .fx-notes-b span { font-size: 13px; }
+@media (max-width: 420px) { .fx-dock .fx-notes-b span { display: none; } .pager .fx-dock { gap: 5px; } .fx-dock button { min-width: 38px; padding: 0 8px; } }
+
+/* ---------- Add to notes (Study panel) ---------- */
+.nb-add { display: flex; gap: 8px; align-items: stretch; margin: 10px 0 2px; }
+.nb-add-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 42px; padding: 9px 12px; border-radius: 10px;
+  border: 1px solid var(--gold); background: #c9a86726; color: var(--gold-soft); font-family: 'Fraunces', Georgia, serif; font-size: 14px; cursor: pointer; }
+.nb-add-btn:active { transform: scale(.98); }
+.nb-add-btn.added { border-color: #7fbf8e99; background: #7fbf8e22; color: #a8e0b4; }
+.nb-add-btn small { font-size: 12px; opacity: .8; text-decoration: underline; text-underline-offset: 2px; }
+.nb-add-to { display: inline-flex; align-items: center; gap: 6px; padding: 0 8px; border: 1px solid var(--panel-border); border-radius: 10px; color: var(--ink-dim); font-size: 12px; max-width: 46%; }
+.nb-add-to select { background: transparent; color: var(--gold-soft); border: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 14px; max-width: 100%; min-width: 0; padding: 6px 0; outline-offset: 2px; }
+.nb-add-to select option { background: var(--bg-panel); color: var(--ink); }
+html.theme-sepia .nb-add-btn, html.theme-light .nb-add-btn { color: var(--ink); }
+html.theme-sepia .nb-add-to select, html.theme-light .nb-add-to select { color: var(--ink); }
+
+/* ---------- notebook ---------- */
+.nb-pagebar { display: flex; align-items: center; gap: 8px; margin: 4px 0 6px; }
+.nb-arrow { width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--border); background: #c9a86712; color: var(--gold); font-size: 26px; line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding-bottom: 3px; }
+.nb-arrow[disabled] { opacity: .3; cursor: default; }
+.nb-pagehead { flex: 1; min-width: 0; background: none; border: 0; color: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: center; padding: 2px 4px; }
+.nb-pagename { font-family: 'Fraunces', Georgia, serif; font-size: 19px; color: var(--gold-soft); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nb-pageof { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 2px; }
+.nb-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 2px 0 10px; }
+.nb-dot { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 1px solid var(--gold); background: transparent; opacity: .55; cursor: pointer; }
+.nb-dot.on { background: var(--gold); opacity: 1; width: 18px; border-radius: 5px; }
+.nb-tools { display: flex; gap: 8px; margin-bottom: 8px; }
+.nb-tools .fx-btn { flex: 1; white-space: nowrap; }
+.nb-tools .fx-btn.primary { flex: 1.3; }
+.nb-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.nb-menu[hidden] { display: none; }
+.nb-paper { min-height: 180px; padding: 12px; border-radius: 16px; border: 1px solid var(--panel-border);
+  background: repeating-linear-gradient(180deg, transparent 0 31px, #c9a86712 31px 32px), #c9a86708; }
+.nb-paper.flip-next { animation: nbIn .28s ease-out; } .nb-paper.flip-prev { animation: nbInR .28s ease-out; }
+@keyframes nbIn { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes nbInR { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.nb-hint { text-align: center; font-size: 11.5px; color: var(--ink-faint); margin-top: 8px; }
+.nb-empty { text-align: center; padding: 22px 10px; color: var(--ink-dim); }
+.nb-empty p { margin: 6px 0; font-size: 15px; }
+.nb-empty .nb-sub { font-size: 13.5px; color: var(--ink-faint); line-height: 1.5; }
+.nb-empty-ico { color: var(--gold); display: inline-flex; padding: 10px; border-radius: 50%; border: 1px solid var(--border); }
+.nb-empty-ico svg { width: 22px; height: 22px; }
+.nb-card { display: block; width: 100%; text-align: left; font: inherit; color: var(--ink); background: var(--bg-panel); border: 1px solid var(--panel-border);
+  border-left: 4px solid var(--gold); border-radius: 12px; padding: 11px 12px; margin-bottom: 9px; cursor: pointer; }
+.nb-card:last-child { margin-bottom: 0; }
+.nb-card:active { transform: scale(.99); }
+.nb-card.k-verse-note { border-left-color: #8fb3ff; }
+.nb-card.k-free { border-left-color: #7fbf8e; }
+.nb-card.k-chapter { border-left-color: #e8d9a8; }
+.nb-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.nb-card-ref { font-family: 'Fraunces', Georgia, serif; font-size: 15px; color: var(--gold-soft); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nb-ver { font-size: 11px; letter-spacing: .06em; color: var(--ink-faint); text-transform: uppercase; }
+.nb-card-date { font-size: 12px; color: var(--ink-faint); flex-shrink: 0; }
+.nb-card-sum { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 14px; line-height: 1.5; color: var(--ink-dim); margin-top: 4px; white-space: pre-wrap; }
+.nb-card-mine { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 13.5px; margin-top: 6px; padding: 5px 8px; border-left: 3px solid #8fb3ff; background: #8fb3ff14; border-radius: 0 8px 8px 0; white-space: pre-wrap; }
+.nb-card-tag { display: inline-block; margin-top: 7px; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); opacity: .8; }
+html.theme-sepia .nb-card, html.theme-light .nb-card { background: #ffffff8c; }
+html.theme-sepia .nb-card-ref, html.theme-light .nb-card-ref, html.theme-sepia .nb-pagename, html.theme-light .nb-pagename { color: var(--ink); }
+
+/* ---------- one note ---------- */
+.nb-note .nb-ref { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; width: 100%; text-align: left; background: #c9a86712; border: 1px solid var(--border); border-radius: 12px;
+  padding: 10px 12px; color: var(--gold-soft); font-family: 'Fraunces', Georgia, serif; font-size: 16px; cursor: pointer; margin-bottom: 10px; }
+.nb-note .nb-ref[disabled] { cursor: default; }
+.nb-go { font-size: 12.5px; color: var(--gold); margin-left: auto; }
+.nb-vtext { -webkit-line-clamp: 6; font-style: italic; }
+.nb-lbl { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin: 12px 0 6px; }
+.nb-note .fx-textarea.nb-sum { min-height: 150px; font-size: 15px; }
+.nb-note select.fx-input { appearance: auto; }
+.nb-meta { font-size: 12px; color: var(--ink-faint); margin-top: 10px; }
+.nb-btns { margin-top: 14px; }
+html.theme-sepia .nb-note .nb-ref, html.theme-light .nb-note .nb-ref { color: var(--ink); }
