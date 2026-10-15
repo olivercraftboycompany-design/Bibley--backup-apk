@@ -1,0 +1,33 @@
+/* bible-extras.css
+   Styling for the translations added by bible-extras-versions.js.
+   Loaded into the existing Bible Reader page, so it reuses that page's own
+   CSS variables (--gold, --bg, etc.) already defined on :root -- with
+   fallback values in case this file is ever used somewhere those aren't
+   defined. */
+
+.bible-extra-version {
+  font-weight: 600;
+}
+
+.bible-extra-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  padding: 2px 7px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--bg, #141b2e);
+  background: var(--gold, #c9a867);
+  border-radius: 999px;
+  cursor: default;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .bible-extra-badge {
+    display: none; /* header row is already tight on small screens */
+  }
+}
